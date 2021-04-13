@@ -16,4 +16,12 @@ describe('Mars Rover', () => {
 
         expect(newPosition).toEqual("0:0:S")
     });
+
+    it('should turn from North to East to South to West', () => {
+        const rover = new Rover();
+
+        const newPosition = rover.command("RRR");
+
+        expect(newPosition).toEqual("0:0:W")
+    });
 });
