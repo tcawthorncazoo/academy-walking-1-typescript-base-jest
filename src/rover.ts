@@ -18,7 +18,9 @@ export class Rover {
             } else if (movement === 'M')  {
                 if (this.direction === 'E') {
                     this.xCoordinate++;
-                } else {
+                } else if(this.direction === 'S'){
+                    this.yCoordinate--;
+                }  else {
                     this.yCoordinate++;
                 }                
             }

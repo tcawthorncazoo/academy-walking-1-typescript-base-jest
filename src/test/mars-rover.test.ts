@@ -64,6 +64,7 @@ describe('Mars Rover', () => {
         it.each([
             ["MRM", "1:1:E"],
             ["MRMRM", "1:0:S"],
+            ["MRMRMRM", "0:0:W"],
         ])('with input %s should return %s', (input, expectedPosition) => {
             const rover = new Rover();
 
