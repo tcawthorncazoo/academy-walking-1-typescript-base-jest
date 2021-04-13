@@ -21,6 +21,20 @@ describe('Mars Rover', () => {
         it.each([
             ["L", "0:0:W"],
             ["LL", "0:0:S"],
+            ["LLL", "0:0:E"],
+            ["LLLL", "0:0:N"],
+        ])('with input %s should return %s', (input, expectedPosition) => {
+            const rover = new Rover();
+
+            const newPosition = rover.command(input);
+
+            expect(newPosition).toEqual(expectedPosition);
+        });
+    })
+
+    describe('moving forwards', () => {
+        it.each([
+            ["M", "0:1:N"],
         ])('with input %s should return %s', (input, expectedPosition) => {
             const rover = new Rover();
 

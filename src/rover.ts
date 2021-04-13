@@ -8,7 +8,7 @@ export class Rover {
     command(input: string): string {
         for(let movement of input){
             if (movement === 'L') {
-                this.direction = 'W';
+                this.rotateLeft();
             } else if (movement === 'R') {
                 this.rotateRight();
             }
@@ -24,6 +24,18 @@ export class Rover {
             this.direction = 'S';
         } else if (this.direction === 'S') {
             this.direction = 'W';
+        } else {
+            this.direction = 'N';
+        }
+    }
+
+    private rotateLeft() {
+        if (this.direction === 'N') {
+            this.direction = 'W';
+        } else if (this.direction === 'W') {
+            this.direction = 'S';
+        } else if (this.direction === 'S') {
+            this.direction = 'E';
         } else {
             this.direction = 'N';
         }
