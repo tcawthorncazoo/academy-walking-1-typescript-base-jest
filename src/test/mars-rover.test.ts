@@ -1,6 +1,12 @@
 import { Rover } from "../rover";
 
 describe('Mars Rover', () => {
+    let rover: Rover;
+
+    beforeEach(() => {
+        rover = new Rover();
+    })
+
     describe('rotating right', () => {
         it.each([
             ["", "0:0:N"],
@@ -9,8 +15,6 @@ describe('Mars Rover', () => {
             ["RRR", "0:0:W"],
             ["RRRR", "0:0:N"],
         ])('with input %s should return %s', (input, expectedPosition) => {
-            const rover = new Rover();
-    
             const newPosition = rover.command(input);
     
             expect(newPosition).toEqual(expectedPosition);
@@ -24,8 +28,6 @@ describe('Mars Rover', () => {
             ["LLL", "0:0:E"],
             ["LLLL", "0:0:N"],
         ])('with input %s should return %s', (input, expectedPosition) => {
-            const rover = new Rover();
-
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);
@@ -38,8 +40,6 @@ describe('Mars Rover', () => {
             ["MM", "0:2:N"],
             ["MMM", "0:3:N"],
         ])('with input %s should return %s', (input, expectedPosition) => {
-            const rover = new Rover();
-
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);
@@ -52,8 +52,6 @@ describe('Mars Rover', () => {
             ["RMM", "2:0:E"],
             ["RMMM", "3:0:E"],
         ])('with input %s should return %s', (input, expectedPosition) => {
-            const rover = new Rover();
-
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);
@@ -66,8 +64,6 @@ describe('Mars Rover', () => {
             ["MRMRM", "1:0:S"],
             ["MRMRMRM", "0:0:W"],
         ])('with input %s should return %s', (input, expectedPosition) => {
-            const rover = new Rover();
-
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);
@@ -82,8 +78,6 @@ describe('Mars Rover', () => {
             ["RMMMMMMMMM", "9:0:E"],
             ["RMMMMMMMMMM", "0:0:E"],
         ])('should return the rover to starting position', (input, expectedPosition) => {
-            const rover = new Rover();
-
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);
@@ -94,9 +88,9 @@ describe('Mars Rover', () => {
     describe('moving backward', () => {
         it.each([
             ["LM", "9:0:W"],
+            ["LMM", "8:0:W"],
+            ["LLM", "0:9:S"],
         ])('should wrap the rover to the far side', (input, expectedPosition) => {
-            const rover = new Rover();
-
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);

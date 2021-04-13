@@ -41,6 +41,10 @@ export class Rover {
         if (this.xCoordinate > 9) {
             this.xCoordinate = 0;
         }
+
+        if (this.xCoordinate < 0) {
+            this.xCoordinate = 9;
+        }
     }
 
     private rotateRight() {
