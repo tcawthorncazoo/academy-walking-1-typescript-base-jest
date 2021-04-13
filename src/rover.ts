@@ -33,6 +33,10 @@ export class Rover {
         } else {
             this.yCoordinate++;
         }
+
+        if (this.yCoordinate > 9) {
+            this.yCoordinate = 0;
+        }
     }
 
     private rotateRight() {

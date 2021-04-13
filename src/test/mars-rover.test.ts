@@ -78,6 +78,9 @@ describe('Mars Rover', () => {
         it.each([
             ["MMMMMMMMM", "0:9:N"],
             ["MMMMMMMMMM", "0:0:N"],
+            ["MMMMMMMMMMM", "0:1:N"],
+            ["RMMMMMMMMM", "9:0:E"],
+            ["RMMMMMMMMMM", "0:0:E"],
         ])('should return the rover to starting position', (input, expectedPosition) => {
             const rover = new Rover();
 
