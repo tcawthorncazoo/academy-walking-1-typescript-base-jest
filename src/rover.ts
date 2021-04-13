@@ -10,6 +10,8 @@ export class Rover {
                 direction = 'S';    
             } else if(direction === 'S'){
                 direction = 'W';    
+            } else {
+                direction = 'N';
             }
         }
 

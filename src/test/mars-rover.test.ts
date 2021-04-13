@@ -16,4 +16,15 @@ describe('Mars Rover', () => {
             expect(newPosition).toEqual(expectedPosition);
         });
     })
+    describe('rotating left', () => {
+        it.each([
+            ["L", "0:0:W"],
+        ])('with input %s should return %s', (input, expectedPosition) => {
+            const rover = new Rover();
+
+            const newPosition = rover.command(input);
+
+            expect(newPosition).toEqual(expectedPosition);
+        });
+    })
 });
