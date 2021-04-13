@@ -7,6 +7,7 @@ describe('Mars Rover', () => {
             ["R", "0:0:E"],
             ["RR", "0:0:S"],
             ["RRR", "0:0:W"],
+            ["RRRR", "0:0:N"],
         ])('with input %s should return %s', (input, expectedPosition) => {
             const rover = new Rover();
     

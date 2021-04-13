@@ -1,14 +1,18 @@
 export class Rover {
     command(input: string): string {
 
-        if (input === 'RRR') {
-            return "0:0:W";
-        } else if(input == 'RR') {
-            return "0:0:S";
-        } else if(input == 'R') {
-            return "0:0:E";
+        var direction = 'N';
+
+        for(let movement of input){
+            if(direction === 'N'){
+                direction = 'E';    
+            } else if(direction === 'E'){
+                direction = 'S';    
+            } else if(direction === 'S'){
+                direction = 'W';    
+            }
         }
 
-        return "0:0:N";
+        return `0:0:${direction}`;
     }
 }
