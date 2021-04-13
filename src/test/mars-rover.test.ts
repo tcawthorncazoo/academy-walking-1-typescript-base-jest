@@ -49,6 +49,21 @@ describe('Mars Rover', () => {
     describe('moving forward East', () => {
         it.each([
             ["RM", "1:0:E"],
+            ["RMM", "2:0:E"],
+            ["RMMM", "3:0:E"],
+        ])('with input %s should return %s', (input, expectedPosition) => {
+            const rover = new Rover();
+
+            const newPosition = rover.command(input);
+
+            expect(newPosition).toEqual(expectedPosition);
+        });
+    });
+
+    describe('moving in many directions', () => {
+        it.each([
+            ["MRM", "1:1:E"],
+            ["MRMRM", "1:0:S"],
         ])('with input %s should return %s', (input, expectedPosition) => {
             const rover = new Rover();
 

@@ -1,10 +1,12 @@
 export class Rover {
     private direction: string;
     private yCoordinate: number;
+    private xCoordinate: number;
 
     constructor() {
         this.direction = 'N';
         this.yCoordinate = 0;
+        this.xCoordinate = 0;
     }
 
     command(input: string): string {
@@ -14,11 +16,15 @@ export class Rover {
             } else if (movement === 'R') {
                 this.rotateRight();
             } else if (movement === 'M')  {
-                this.yCoordinate++;
+                if (this.direction === 'E') {
+                    this.xCoordinate++;
+                } else {
+                    this.yCoordinate++;
+                }                
             }
         }
 
-        return `0:${this.yCoordinate}:${this.direction}`;
+        return `${this.xCoordinate}:${this.yCoordinate}:${this.direction}`;
     }
 
     private rotateRight() {
