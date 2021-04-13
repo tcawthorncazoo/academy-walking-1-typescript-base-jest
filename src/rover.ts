@@ -10,23 +10,29 @@ export class Rover {
     }
 
     command(input: string): string {
-        for(let movement of input){
+        for (let movement of input) {
             if (movement === 'L') {
                 this.rotateLeft();
             } else if (movement === 'R') {
                 this.rotateRight();
-            } else if (movement === 'M')  {
-                if (this.direction === 'E') {
-                    this.xCoordinate++;
-                } else if(this.direction === 'S'){
-                    this.yCoordinate--;
-                }  else {
-                    this.yCoordinate++;
-                }                
+            } else if (movement === 'M') {
+                this.move();
             }
         }
 
         return `${this.xCoordinate}:${this.yCoordinate}:${this.direction}`;
+    }
+
+    private move() {
+        if (this.direction === 'E') {
+            this.xCoordinate++;
+        } else if (this.direction === 'W') {
+            this.xCoordinate--;
+        } else if (this.direction === 'S') {
+            this.yCoordinate--;
+        } else {
+            this.yCoordinate++;
+        }
     }
 
     private rotateRight() {

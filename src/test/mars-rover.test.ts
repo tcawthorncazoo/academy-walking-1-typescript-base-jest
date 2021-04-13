@@ -73,4 +73,17 @@ describe('Mars Rover', () => {
             expect(newPosition).toEqual(expectedPosition);
         });
     });
+
+    describe('moving forward 10 times', () => {
+        it.each([
+            ["MMMMMMMMM", "0:9:N"],
+            ["MMMMMMMMMM", "0:0:N"],
+        ])('should return the rover to starting position', (input, expectedPosition) => {
+            const rover = new Rover();
+
+            const newPosition = rover.command(input);
+
+            expect(newPosition).toEqual(expectedPosition);
+        });
+    });
 });
