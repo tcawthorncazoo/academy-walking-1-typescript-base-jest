@@ -11,6 +11,8 @@ export class Rover {
                 this.rotateLeft();
             } else if (movement === 'R') {
                 this.rotateRight();
+            } else if (movement === 'M')  {
+                return `0:1:${this.direction}`
             }
         }
 
