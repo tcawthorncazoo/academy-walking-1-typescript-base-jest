@@ -1,20 +1,31 @@
 export class Rover {
+    private direction: string;
+
+    constructor() {
+        this.direction = 'N';
+    }
+
     command(input: string): string {
-
-        var direction = 'N';
-
         for(let movement of input){
-            if(direction === 'N'){
-                direction = 'E';    
-            } else if(direction === 'E'){
-                direction = 'S';    
-            } else if(direction === 'S'){
-                direction = 'W';    
-            } else {
-                direction = 'N';
+            if (movement === 'L') {
+                this.direction = 'W';
+            } else if (movement === 'R') {
+                this.rotateRight();
             }
         }
 
-        return `0:0:${direction}`;
+        return `0:0:${this.direction}`;
+    }
+
+    private rotateRight() {
+        if (this.direction === 'N') {
+            this.direction = 'E';
+        } else if (this.direction === 'E') {
+            this.direction = 'S';
+        } else if (this.direction === 'S') {
+            this.direction = 'W';
+        } else {
+            this.direction = 'N';
+        }
     }
 }
