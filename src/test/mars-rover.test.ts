@@ -1,27 +1,16 @@
 import { Rover } from "../rover";
 
 describe('Mars Rover', () => {
-    it('should turn from North to East', () => {
+    it.each([
+        ["", "0:0:N"],
+        ["R", "0:0:E"],
+        ["RR", "0:0:S"],
+        ["RRR", "0:0:W"],
+    ])('should not move or rotate without commands', (input, expectedPosition) => {
         const rover = new Rover();
 
-        const newPosition = rover.command("R");
+        const newPosition = rover.command(input);
 
-        expect(newPosition).toEqual("0:0:E")
-    });
-
-    it('should turn from North to East to South', () => {
-        const rover = new Rover();
-
-        const newPosition = rover.command("RR");
-
-        expect(newPosition).toEqual("0:0:S")
-    });
-
-    it('should turn from North to East to South to West', () => {
-        const rover = new Rover();
-
-        const newPosition = rover.command("RRR");
-
-        expect(newPosition).toEqual("0:0:W")
+        expect(newPosition).toEqual(expectedPosition);
     });
 });
