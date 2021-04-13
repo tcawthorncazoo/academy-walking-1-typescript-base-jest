@@ -96,4 +96,14 @@ describe('Mars Rover', () => {
             expect(newPosition).toEqual(expectedPosition);
         });
     });
+
+    describe('example test case', () => {
+        it.each([
+            ["MMRMMLM", "2:3:N"],
+        ])('should meet acceptance criteria', (input, expectedPosition) => {
+            const newPosition = rover.command(input);
+
+            expect(newPosition).toEqual(expectedPosition);
+        });
+    });
 });

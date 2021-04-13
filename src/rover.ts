@@ -1,7 +1,46 @@
+type direction = 'N'|'E'|'S'|'W';
+
+interface cardinalDirections{
+    N: {
+        left: direction,
+        right: direction
+    },
+    E: {
+        left: direction,
+        right: direction
+    },
+    S: {
+        left: direction,
+        right: direction
+    },
+    W: {
+        left: direction,
+        right: direction
+    }
+}
+
 export class Rover {
-    private direction: string;
+    private direction: direction;
     private yCoordinate: number;
     private xCoordinate: number;
+    private cardinalDirections: cardinalDirections = {
+        N: {
+            left:'W',
+            right:'E'
+        },
+        E: {
+            left:'N',
+            right:'S'
+        },
+        S: {
+            left:'E',
+            right:'W'
+        },
+        W: {
+            left:'S',
+            right:'N'
+        }
+    }
 
     constructor() {
         this.direction = 'N';
@@ -38,6 +77,10 @@ export class Rover {
             this.yCoordinate = 0;
         }
 
+        if (this.yCoordinate < 0) {
+            this.yCoordinate = 9;
+        }
+
         if (this.xCoordinate > 9) {
             this.xCoordinate = 0;
         }
@@ -45,29 +88,15 @@ export class Rover {
         if (this.xCoordinate < 0) {
             this.xCoordinate = 9;
         }
+
     }
 
     private rotateRight() {
-        if (this.direction === 'N') {
-            this.direction = 'E';
-        } else if (this.direction === 'E') {
-            this.direction = 'S';
-        } else if (this.direction === 'S') {
-            this.direction = 'W';
-        } else {
-            this.direction = 'N';
-        }
+        this.direction = this.cardinalDirections[this.direction].right;
     }
 
+
     private rotateLeft() {
-        if (this.direction === 'N') {
-            this.direction = 'W';
-        } else if (this.direction === 'W') {
-            this.direction = 'S';
-        } else if (this.direction === 'S') {
-            this.direction = 'E';
-        } else {
-            this.direction = 'N';
-        }
+        this.direction = this.cardinalDirections[this.direction].left;
     }
 }
