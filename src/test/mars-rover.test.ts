@@ -70,7 +70,7 @@ describe('Mars Rover', () => {
         });
     });
 
-    describe('moving forward 10 times', () => {
+    describe('moving northward 10 times', () => {
         it.each([
             ["MMMMMMMMM", "0:9:N"],
             ["MMMMMMMMMM", "0:0:N"],
@@ -85,7 +85,7 @@ describe('Mars Rover', () => {
     });
 
 
-    describe('moving backward', () => {
+    describe('moving westward, southward beyond grid bounds', () => {
         it.each([
             ["LM", "9:0:W"],
             ["LMM", "8:0:W"],
@@ -97,13 +97,21 @@ describe('Mars Rover', () => {
         });
     });
 
-    describe('example test case', () => {
+    describe('acceptance test from spec', () => {
         it.each([
             ["MMRMMLM", "2:3:N"],
         ])('should meet acceptance criteria', (input, expectedPosition) => {
             const newPosition = rover.command(input);
 
             expect(newPosition).toEqual(expectedPosition);
+        });
+    });
+
+    describe('when the first move was undone', () => {
+        it('should revert to the initial starting point', () => {
+            const newPosition = rover.command('MU');
+
+            expect(newPosition).toEqual('0:0:N')
         });
     });
 });

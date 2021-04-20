@@ -99,9 +99,4 @@ export class Rover {
     private rotateLeft() {
         this.direction = this.cardinalDirections[this.direction].left;
     }
-
-    private checkGrid(coord) {
-
-    }
-
 }
