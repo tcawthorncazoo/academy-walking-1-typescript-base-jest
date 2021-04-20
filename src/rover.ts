@@ -19,6 +19,32 @@ interface cardinalDirections{
     }
 }
 
+export class Controller {
+
+    rover : Rover;
+
+    constructor(rover: Rover) {
+        this.rover = rover;
+    }
+
+    command(input: string): string {
+        for (let movement of input) {
+            if (movement === 'L') {
+                this.rover.rotateLeft();
+            } else if (movement === 'R') {
+                this.rover.rotateRight();
+            } else if (movement === 'M') {
+                this.rover.move();
+            }
+
+        }
+
+        return this.rover.currentLocation();
+    }
+
+}
+
+
 export class Rover {
     private direction: direction;
     private yCoordinate: number;
@@ -48,21 +74,17 @@ export class Rover {
         this.xCoordinate = 0;
     }
 
-    command(input: string): string {
-        for (let movement of input) {
-            if (movement === 'L') {
-                this.rotateLeft();
-            } else if (movement === 'R') {
-                this.rotateRight();
-            } else if (movement === 'M') {
-                this.move();
-            }
-        }
 
-        return `${this.xCoordinate}:${this.yCoordinate}:${this.direction}`;
+    public rotateRight() {
+        this.direction = this.cardinalDirections[this.direction].right;
     }
 
-    private move() {
+
+    public rotateLeft() {
+        this.direction = this.cardinalDirections[this.direction].left;
+    }
+
+    public move() {
         if (this.direction === 'E') {
             this.xCoordinate++;
         } else if (this.direction === 'W') {
@@ -88,15 +110,11 @@ export class Rover {
         if (this.xCoordinate < 0) {
             this.xCoordinate = 9;
         }
-
     }
 
-    private rotateRight() {
-        this.direction = this.cardinalDirections[this.direction].right;
-    }
+    public currentLocation () {
 
+        return `${this.xCoordinate}:${this.yCoordinate}:${this.direction}`
 
-    private rotateLeft() {
-        this.direction = this.cardinalDirections[this.direction].left;
     }
 }
