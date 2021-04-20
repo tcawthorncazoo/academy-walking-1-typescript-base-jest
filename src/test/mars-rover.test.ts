@@ -109,10 +109,16 @@ describe('Mars Rover', () => {
     });
 
     describe('when the first move was undone', () => {
-        it('should revert to the initial starting point', () => {
-            const newPosition = controller.command('MU');
+        it.each([['MU'], ['LU']])('should revert to the initial starting point', (command) => {
+            const newPosition = controller.command(command);
     
             expect(newPosition).toEqual('0:0:N')
+        });
+    });
+
+    describe.skip('when the second move is undone', () => {
+        it('should revert to the position following the first move', () => {
+
         });
     });
 });
