@@ -1,4 +1,5 @@
-import { Controller, Rover } from "../rover";
+import { Controller } from "../controller";
+import { Rover } from "../rover";
 
 describe('Mars Rover', () => {
     let controller: Controller;
@@ -107,11 +108,11 @@ describe('Mars Rover', () => {
         });
     });
 
-    // describe('when the first move was undone', () => {
-    //     it('should revert to the initial starting point', () => {
-    //         const newPosition = rover.command('MU');
-    //
-    //         expect(newPosition).toEqual('0:0:N')
-    //     });
-    // });
+    describe('when the first move was undone', () => {
+        it('should revert to the initial starting point', () => {
+            const newPosition = controller.command('MU');
+    
+            expect(newPosition).toEqual('0:0:N')
+        });
+    });
 });
